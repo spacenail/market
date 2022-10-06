@@ -1,6 +1,6 @@
 package com.github.spacenail.market.repo;
 
-import com.github.spacenail.market.service.Product;
+import com.github.spacenail.market.Model.Product;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;

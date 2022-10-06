@@ -1,5 +1,6 @@
 package com.github.spacenail.market.service;
 
+import com.github.spacenail.market.Model.Product;
 import com.github.spacenail.market.repo.InMemoryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ public class ProductService {
     }
 
     public List<Product> getProducts(){
+        System.out.println(repo.getProductList());
         return repo.getProductList();
     }
 

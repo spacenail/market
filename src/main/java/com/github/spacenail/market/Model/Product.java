@@ -1,4 +1,4 @@
-package com.github.spacenail.market.service;
+package com.github.spacenail.market.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
