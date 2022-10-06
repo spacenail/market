@@ -17,7 +17,6 @@ public class ProductService {
     }
 
     public List<Product> getProducts(){
-        System.out.println(repo.getProductList());
         return repo.getProductList();
     }
 
