@@ -31,4 +31,8 @@ public class InMemoryRepo {
     public List<Product> getProductList(){
     return productList;
     }
+
+    public void delete(long id) {
+    productList.remove(getById(id));
+    }
 }
