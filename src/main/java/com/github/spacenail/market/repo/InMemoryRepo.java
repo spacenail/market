@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@Repository
+//@Repository
 public class InMemoryRepo {
     private List<Product> productList;
-
+/*
 @PostConstruct
  private void init(){
         productList = new ArrayList<>(Arrays.asList(
@@ -21,7 +21,7 @@ public class InMemoryRepo {
                 new Product(4L, "Samsung",800)
         ));
  }
-
+ */
     public Product getById(long id){
         return productList.stream().filter(
                 product -> product.getId()==id).

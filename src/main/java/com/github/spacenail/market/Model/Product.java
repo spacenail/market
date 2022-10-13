@@ -1,16 +1,30 @@
 package com.github.spacenail.market.Model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-@AllArgsConstructor
+import javax.persistence.*;
+
+@NoArgsConstructor
 @Getter
 @Setter
 @ToString
+@Entity
+@Table(name = "products")
+@NamedQueries({
+        @NamedQuery(name = "Product.findById",
+                query = "SELECT product FROM Product product WHERE product.id = :id"),
+        @NamedQuery(name = "Product.findAll",
+                query = "SELECT product FROM Product product")
+})
 public class Product {
-    private long id;
+    @Id
+    @GeneratedValue
+    @Column(name="id")
+    private Long id;
+
+    @Column(name="title")
     private String title;
-    private int cost;
+
+    @Column(name="price")
+    private int price;
 }
