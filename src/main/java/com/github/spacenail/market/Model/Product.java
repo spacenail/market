@@ -3,6 +3,7 @@ package com.github.spacenail.market.Model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor
 @Getter
@@ -18,7 +19,7 @@ import javax.persistence.*;
 })
 public class Product {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Long id;
 
@@ -26,5 +27,13 @@ public class Product {
     private String title;
 
     @Column(name="price")
-    private int price;
+    private Integer price;
+
+    @ManyToMany
+    @JoinTable(
+            name = "products_customers",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "customer_id")
+    )
+    private List<Customer> customers;
 }
