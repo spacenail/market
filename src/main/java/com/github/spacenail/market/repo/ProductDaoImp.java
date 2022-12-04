@@ -2,6 +2,7 @@ package com.github.spacenail.market.repo;
 
 import com.github.spacenail.market.Model.Product;
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 
@@ -11,8 +12,9 @@ import java.util.List;
 public class ProductDaoImp implements ProductDao{
     private SessionFactoryUtils sessionFactoryUtils;
 
-    public ProductDaoImp() {
-        sessionFactoryUtils = new SessionFactoryUtils();
+    @Autowired
+    public ProductDaoImp(SessionFactoryUtils sessionFactoryUtils) {
+        this.sessionFactoryUtils = sessionFactoryUtils;
     }
 
     public List<Product> getProducts() {

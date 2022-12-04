@@ -12,8 +12,6 @@ import java.util.List;
 @Entity
 @Table(name = "products")
 @NamedQueries({
-        @NamedQuery(name = "Product.findById",
-                query = "SELECT product FROM Product product WHERE product.id = :id"),
         @NamedQuery(name = "Product.findAll",
                 query = "SELECT product FROM Product product")
 })
@@ -29,6 +27,7 @@ public class Product {
     @Column(name="price")
     private Integer price;
 
+    /*
     @ManyToMany
     @JoinTable(
             name = "products_customers",
@@ -36,4 +35,6 @@ public class Product {
             inverseJoinColumns = @JoinColumn(name = "customer_id")
     )
     private List<Customer> customers;
+
+     */
 }

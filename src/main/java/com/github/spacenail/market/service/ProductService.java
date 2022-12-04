@@ -21,5 +21,6 @@ public class ProductService {
     }
 
     public void deleteProductById(long id) {
+    repo.delete(id);
     }
 }
