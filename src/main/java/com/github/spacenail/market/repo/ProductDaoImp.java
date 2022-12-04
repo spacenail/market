@@ -8,10 +8,15 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class ProductDaoImp {
+public class ProductDaoImp implements ProductDao{
+    private SessionFactoryUtils sessionFactoryUtils;
+
+    public ProductDaoImp() {
+        sessionFactoryUtils = new SessionFactoryUtils();
+    }
 
     public List<Product> getProducts() {
-        try (Session session = SessionFactoryUtils.getSession()) {
+        try (Session session = sessionFactoryUtils.getSession()) {
             session.beginTransaction();
             List<Product> products = session.getSession().
                     getNamedQuery("Product.findAll").getResultList();
@@ -19,4 +24,46 @@ public class ProductDaoImp {
             return products;
         }
     }
+
+    @Override
+    public Product getProduct(Long id) {
+        try(Session session = sessionFactoryUtils.getSession()){
+            session.beginTransaction();
+            Product product = session.get(Product.class,id);
+            session.getTransaction().commit();
+            return product;
+        }
+    }
+
+
+    @Override
+    public void delete(Long id) {
+        try(Session session = sessionFactoryUtils.getSession()){
+            session.beginTransaction();
+            session.createQuery("delete from Product p where p.id = :id")
+                    .setParameter("id", id)
+                    .executeUpdate();
+            session.getTransaction().commit();
+        }
+    }
+
+    public void delete(Product product) {
+        try(Session session = sessionFactoryUtils.getSession()){
+            session.beginTransaction();
+            session.delete(product);
+            session.getTransaction().commit();
+        }
+    }
+
+    @Override
+    public Product saveOrUpdate(Product product) {
+        try(Session session = sessionFactoryUtils.getSession()){
+            session.beginTransaction();
+            session.saveOrUpdate(product);
+            session.getTransaction().commit();
+            return product;
+        }
+    }
+
+
 }
