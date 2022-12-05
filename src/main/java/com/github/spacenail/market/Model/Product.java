@@ -27,7 +27,6 @@ public class Product {
     @Column(name="price")
     private Integer price;
 
-    /*
     @ManyToMany
     @JoinTable(
             name = "products_customers",
@@ -36,5 +35,4 @@ public class Product {
     )
     private List<Customer> customers;
 
-     */
 }
