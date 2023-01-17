@@ -27,6 +27,14 @@
     </tr>
     </tbody>
 </table>
+    <h3> Добавить новый продукт </h3>
+    <form novalidate ng-submit="addProduct()">
+        <input class="form-control" type="text" placeholder="Модель" ng-model="newProductJson.title">
+        <p></p>
+        <input class="form-control" type="number" placeholder="Стоимость" ng-model="newProductJson.price">
+        <p></p>
+        <button type="submit" class="btn btn-secondary"> Сохранить продукт</button>
+    </form>
 </div>
 </body>
 </html>

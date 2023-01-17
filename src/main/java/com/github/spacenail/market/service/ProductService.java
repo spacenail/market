@@ -4,6 +4,7 @@ import com.github.spacenail.market.Model.Product;
 import com.github.spacenail.market.repo.ProductDaoImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -22,5 +23,9 @@ public class ProductService {
 
     public void deleteProductById(long id) {
     repo.delete(id);
+    }
+
+    public void addProduct(Product product) {
+    repo.saveOrUpdate(product);
     }
 }

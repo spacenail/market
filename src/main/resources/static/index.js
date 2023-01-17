@@ -3,18 +3,25 @@ angular.module('app', []).controller('productController', function ($scope, $htt
     $scope.loadProducts = function () {
         $http.get(contextPath + '/allProducts')
             .then(function (response) {
-                $scope.productList = response.data;});
-    };
-       $scope.deleteProduct = function (productId){
-            $http({
-                url: contextPath + '/deleteProduct',
-                method: 'DELETE',
-                params: {
-                    id: productId
-                    }
-            }).then(function(){
-            window.location.assign(contextPath);
+                $scope.productList = response.data;
             });
-        };
+    };
+    $scope.deleteProduct = function (productId) {
+        $http({
+            url: contextPath + '/deleteProduct',
+            method: 'DELETE',
+            params: {
+                id: productId
+            }
+        }).then(function () {
+            window.location.assign(contextPath);
+        });
+    };
+    $scope.addProduct = function () {
+       $http.post(contextPath + '/addProduct', $scope.newProductJson)
+        .then(function () {
+        $scope.loadProducts();
+        });
+    };
     $scope.loadProducts();
 });
