@@ -9,26 +9,32 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/v1/basket")
 public class IndexController {
     private ProductService service;
-
-    @GetMapping("/allProducts")
-    public List<Product> product() {
-    return service.getProducts();
-    }
 
     @Autowired
     private void setProductService(ProductService service) {
         this.service = service;
     }
 
-    @DeleteMapping("/deleteProduct")
-    public void delete(long id){
+    @GetMapping
+    public List<Product> product() {
+    return service.getProducts();
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id){
         service.deleteProductById(id);
     }
 
-    @PostMapping("/addProduct")
+    @PostMapping
     public void addProduct(@RequestBody Product product){
         service.addProduct(product);
     }
+
+  //  @PutMapping
+    //public void updateProduct(@RequestBody Product product){
+      //  service.saveOrUpdate(product);
+    //}
 }
