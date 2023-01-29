@@ -20,7 +20,8 @@ angular.module('app', []).controller('basketController', function ($scope, $http
     };
 
     $scope.updateProduct = function (){
-        $http.put(contextPath, $scope.updateProduct)
+        console.log($scope.product)
+        $http.put(contextPath, $scope.product)
             .then(function (){
                 $scope.loadProducts();
             })
