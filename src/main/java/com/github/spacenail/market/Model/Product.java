@@ -5,16 +5,10 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
-@NoArgsConstructor
-@Getter
-@Setter
-@ToString
+@Data
 @Entity
 @Table(name = "products")
-@NamedQueries({
-        @NamedQuery(name = "Product.findAll",
-                query = "SELECT product FROM Product product")
-})
+
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +27,6 @@ public class Product {
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "customer_id")
     )
-    private List<Customer> customers;
+    private List<User> users;
 
 }

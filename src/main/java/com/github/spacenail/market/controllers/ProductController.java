@@ -4,12 +4,13 @@ import com.github.spacenail.market.Model.Product;
 
 import com.github.spacenail.market.service.ProductServiceData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/basket")
+@RequestMapping("/api/v1/products")
 public class ProductController {
     private ProductServiceData service;
 
@@ -24,21 +25,22 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
+    @Secured("ROLE-ADMIN")
     public Product product(@PathVariable Long id) {
         return service.getProduct(id);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/admin/{id}")
     public void delete(@PathVariable Long id){
         service.deleteProductById(id);
     }
 
-    @PostMapping
+    @PostMapping("/admin")
     public void addProduct(@RequestBody Product product){
         service.addProduct(product);
     }
 
-    @PutMapping
+    @PutMapping("/admin")
     public void updateProduct(@RequestBody Product product){service.updateProduct(product);
     }
 }
