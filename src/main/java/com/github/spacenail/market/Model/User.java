@@ -4,11 +4,10 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.List;
 
 @Entity
 @Data
-@Table(name = "customers")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,14 +19,6 @@ public class User {
 
     @Column(name = "password")
     private String password;
-
-    @ManyToMany
-    @JoinTable(
-            name = "products_users",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id")
-    )
-    private List<Product> products;
 
     @ManyToMany
     @JoinTable(
