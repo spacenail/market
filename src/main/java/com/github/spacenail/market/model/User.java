@@ -1,4 +1,4 @@
-package com.github.spacenail.market.Model;
+package com.github.spacenail.market.model;
 
 import lombok.Data;
 
@@ -20,9 +20,8 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @ManyToMany
-    @JoinTable(
-            name = "roles_users",
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "roles_users",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )

@@ -1,7 +1,7 @@
 package com.github.spacenail.market.service;
 
-import com.github.spacenail.market.Model.Product;
-import com.github.spacenail.market.Model.User;
+import com.github.spacenail.market.model.Product;
+import com.github.spacenail.market.model.User;
 import com.github.spacenail.market.repo.ProductRepo;
 import com.github.spacenail.market.repo.RoleRepo;
 import com.github.spacenail.market.repo.UserRepo;

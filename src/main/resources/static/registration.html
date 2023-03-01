@@ -1,0 +1,31 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="reg.js"></script>
+    <title> Регистрация </title>
+</head>
+<body>
+<div class="container" ng-controller="regController">
+    <form action="" class="reg-form" ng-submit="registration(name,password)">
+        <fieldset>
+            <legend> Введите данные для регистрации: </legend>
+            <table>
+            <tr>
+                <td><label for="name"> Введите имя пользователя: </label></td>
+                <td><input type="text" placeholder="Ivan" ng-model="name" name="name" id="name" required></td>
+            <tr>
+                <td><label for="password">Введите пароль: </label></td>
+                <td><input type="text" placeholder="Password!" ng-model="password" name="password" id="password" required></td>
+                </table>
+        </fieldset>
+        <div class="button">
+            <input type="submit" value="Регистрация">
+        </div>
+    </form>
+</div>
+</body>
+</html>

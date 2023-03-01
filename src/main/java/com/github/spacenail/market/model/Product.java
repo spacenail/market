@@ -1,4 +1,4 @@
-package com.github.spacenail.market.Model;
+package com.github.spacenail.market.model;
 
 import lombok.*;
 

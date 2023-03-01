@@ -1,6 +1,6 @@
 package com.github.spacenail.market.controllers;
 
-import com.github.spacenail.market.Model.Product;
+import com.github.spacenail.market.model.Product;
 
 import com.github.spacenail.market.service.ProductServiceData;
 import org.springframework.beans.factory.annotation.Autowired;

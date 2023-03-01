@@ -1,30 +1,28 @@
 package com.github.spacenail.market.service;
 
-import com.github.spacenail.market.Model.Role;
-import com.github.spacenail.market.Model.User;
-import com.github.spacenail.market.repo.RoleRepo;
+import com.github.spacenail.market.model.Role;
+import com.github.spacenail.market.model.User;
 import com.github.spacenail.market.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class CustomUserDetailService implements UserDetailsService {
     private UserRepo userRepo;
-    private RoleRepo roleRepo;
+
 @Autowired
     public void setUserRepo(UserRepo userRepo) {
         this.userRepo = userRepo;
     }
-@Autowired
-    public void setRoleRepo(RoleRepo roleRepo) {
-        this.roleRepo = roleRepo;
-    }
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -34,7 +32,7 @@ public class CustomUserDetailService implements UserDetailsService {
 
     }
 
-    private List<SimpleGrantedAuthority> getAuthority(Collection<Role> roles){
+    private Collection<? extends GrantedAuthority> getAuthority(Collection<Role> roles){
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
 }
